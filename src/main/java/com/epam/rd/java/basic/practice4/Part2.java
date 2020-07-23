@@ -12,11 +12,15 @@ public class Part2 {
 
     public static void main(String[] args) throws IOException {
 
-        String s = createNumbers();
-        System.out.println("input ==> " + s);
-        writeToFile(FILE_TO_WRITE,s);
-        s = readAndWriteToFile(FILE_TO_WRITE,FILE_TO_WRITE_SORTED);
-        System.out.println("output ==> " + s);
+        try {
+            String s = createNumbers();
+            System.out.println("input ==> " + s);
+            writeToFile(FILE_TO_WRITE, s);
+            s = readAndWriteToFile(FILE_TO_WRITE, FILE_TO_WRITE_SORTED);
+            System.out.println("output ==> " + s);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -76,9 +80,9 @@ public class Part2 {
                 sb.append(x).append(" ");
             }
 
-            sb.deleteCharAt(sb.length()-1);
+            sb.deleteCharAt(sb.length() - 1);
 
-            writeToFile(fileToWrite,sb.toString());
+            writeToFile(fileToWrite, sb.toString());
             return sb.toString();
         }
     }
