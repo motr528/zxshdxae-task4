@@ -10,17 +10,13 @@ public class Part2 {
     private final static String FILE_TO_WRITE_SORTED = "part2_sorted.txt";
 
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
-        try {
-            String s = createNumbers();
-            System.out.println("input ==> " + s);
-            writeToFile(FILE_TO_WRITE, s);
-            s = readAndWriteToFile(FILE_TO_WRITE, FILE_TO_WRITE_SORTED);
-            System.out.println("output ==> " + s);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        String s = createNumbers();
+        System.out.println("input ==> " + s);
+        writeToFile(FILE_TO_WRITE, s);
+        s = readAndWriteToFile(FILE_TO_WRITE, FILE_TO_WRITE_SORTED);
+        System.out.println("output ==> " + s);
 
     }
 
@@ -44,7 +40,7 @@ public class Part2 {
         }
     }
 
-    public static String readAndWriteToFile(String fileToRead, String fileToWrite) throws IOException {
+    public static String readAndWriteToFile(String fileToRead, String fileToWrite) {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(fileToRead), WIN_CHARSET))) {
             String s;
             StringBuilder sb = new StringBuilder();
@@ -84,6 +80,9 @@ public class Part2 {
 
             writeToFile(fileToWrite, sb.toString());
             return sb.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 }
