@@ -10,7 +10,7 @@ public class Part1 {
     private static final String LINE_SEP = System.lineSeparator();
 
     public static void main(String[] args) {
-        try(BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("1.txt"),"windows-1251"))) {
+        try(BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("part1.txt")))) {
             System.setOut(new PrintStream(System.out, true, "UTF-8"));
             String s;
             StringBuilder sb = new StringBuilder();
