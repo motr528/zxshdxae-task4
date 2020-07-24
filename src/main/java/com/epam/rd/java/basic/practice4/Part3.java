@@ -6,4 +6,8 @@ public class Part3 {
 
     }
 
+    public static void getType() {
+
+    }
+
 }
