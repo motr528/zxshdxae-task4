@@ -22,7 +22,7 @@ public class Part3 {
 
     public static void getType() {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String s = "";
+        String s;
 
         try {
             while (true) {
