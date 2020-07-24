@@ -27,10 +27,13 @@ public class Part3 {
         try {
             while (true) {
                 s = br.readLine();
-                System.out.println(getMatchingData(s));
+
                 if (s.equals("stop")) {
                     break;
                 }
+                System.out.print(getMatchingData(s));
+                System.out.println();
+
             }
         } catch (IOException e) {
             System.out.println("Incorrect input");
@@ -68,6 +71,8 @@ public class Part3 {
                 case "String":
                     regex = "[\\w\\p{L}&&\\D]{2,}";
                     break;
+                default:
+                    return "Incorrect input";
             }
 
             Matcher matcher = Pattern.compile(regex).matcher(s);
