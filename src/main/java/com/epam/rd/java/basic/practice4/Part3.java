@@ -26,7 +26,6 @@ public class Part3 {
 
         try {
             while (true) {
-                System.out.println("Print desired type:");
                 s = br.readLine();
                 System.out.println(getMatchingData(s));
                 if (s.equals("stop")) {
