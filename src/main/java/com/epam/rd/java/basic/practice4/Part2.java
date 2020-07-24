@@ -1,13 +1,13 @@
 package com.epam.rd.java.basic.practice4;
 
 import java.io.*;
-import java.util.List;
+import java.util.Random;
 
 public class Part2 {
 
-    private final static String WIN_CHARSET = "windows-1251";
-    private final static String FILE_TO_WRITE = "part2.txt";
-    private final static String FILE_TO_WRITE_SORTED = "part2_sorted.txt";
+    private static final String WIN_CHARSET = "windows-1251";
+    private static final String FILE_TO_WRITE = "part2.txt";
+    private static final String FILE_TO_WRITE_SORTED = "part2_sorted.txt";
 
 
     public static void main(String[] args) {
@@ -22,9 +22,10 @@ public class Part2 {
 
     public static String createNumbers() {
         StringBuilder sb = new StringBuilder();
+        Random rnd = new Random();
 
         for (int i = 0; i < 10; i++) {
-            sb.append((int) (Math.random() * 50));
+            sb.append(rnd.nextInt(51));
             if (i < 9) {
                 sb.append(" ");
             }
@@ -79,6 +80,7 @@ public class Part2 {
             sb.deleteCharAt(sb.length() - 1);
 
             writeToFile(fileToWrite, sb.toString());
+
             return sb.toString();
         } catch (IOException e) {
             e.printStackTrace();
