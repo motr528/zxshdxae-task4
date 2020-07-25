@@ -13,7 +13,8 @@ public class Part4 implements Iterable<String> {
     private static final String WIN_CHARSET = "windows-1251";
     private static final String LINE_SEP = System.lineSeparator();
 //    private static final String REGEX = "[\\w\\p{Upper}\\p{L}][^.!?]*[.!?]";
-    private static final String REGEX = "[\\w\\p{Upper}\\p{L}].*?[.!?]";
+//    private static final String REGEX = "[\\w\\p{Upper}\\p{L}].*?[.!?]";
+    private static final String REGEX = "[\\w\\p{Upper}\\p{L}][\\w\\p{L}\\s,?!]*?[.!?]";
 
     public static void main(String[] args) {
         Part4 part4 = new Part4();
