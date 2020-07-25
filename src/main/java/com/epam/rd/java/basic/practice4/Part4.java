@@ -15,15 +15,13 @@ public class Part4 implements Iterable<String> {
     public static void main(String[] args) {
         Part4 part4 = new Part4();
         Iterator<String> iterator = part4.iterator();
+//        System.setOut(new PrintStream(System.out,true,"UTF-8"));
 
 
-        StringBuilder sb = new StringBuilder();
         while (iterator.hasNext()) {
-            sb.append(iterator.next()).append(" ");
-            sb.append(LINE_SEP);
+            System.out.println(iterator.next());
         }
-        sb.deleteCharAt(sb.length()-3);
-        System.out.println(sb.toString().trim());
+
     }
 
     @Override
