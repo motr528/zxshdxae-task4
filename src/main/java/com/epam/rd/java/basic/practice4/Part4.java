@@ -19,7 +19,7 @@ public class Part4 implements Iterable<String> {
 
         StringBuilder sb = new StringBuilder();
         while (iterator.hasNext()) {
-            sb.append(iterator.next());
+            sb.append(iterator.next()).append(" ");
             sb.append(LINE_SEP);
         }
         System.out.println(sb.toString().trim());
