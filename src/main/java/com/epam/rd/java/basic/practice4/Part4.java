@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Part4 implements Iterable<String>{
+public class Part4 implements Iterable<String> {
 
     private static final String FILE_NAME = "part4.txt";
     private static final String WIN_CHARSET = "windows-1251";
@@ -16,9 +16,13 @@ public class Part4 implements Iterable<String>{
         Part4 part4 = new Part4();
         Iterator<String> iterator = part4.iterator();
 
+
+        StringBuilder sb = new StringBuilder();
         while (iterator.hasNext()) {
-            System.out.println(iterator.next() + " ");
+            sb.append(iterator.next());
+            sb.append(LINE_SEP);
         }
+        System.out.println(sb.toString().trim());
     }
 
     @Override
