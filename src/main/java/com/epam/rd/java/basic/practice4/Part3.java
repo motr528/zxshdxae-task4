@@ -32,8 +32,6 @@ public class Part3 {
                     break;
                 }
                 System.out.print(getMatchingData(s));
-                System.out.println();
-
             }
         } catch (IOException e) {
             System.out.println("Incorrect input");
@@ -81,9 +79,9 @@ public class Part3 {
             while (matcher.find()) {
                 sb.append(matcher.group()).append(" ");
             }
-            if (sb.length() != 0) {
-                sb.deleteCharAt(sb.length() - 1);
-            }
+//            if (sb.length() != 0) {
+//                sb.deleteCharAt(sb.length() - 1);
+//            }
 
             return sb.toString();
 
