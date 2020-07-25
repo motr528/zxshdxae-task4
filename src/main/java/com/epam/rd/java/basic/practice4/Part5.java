@@ -10,12 +10,11 @@ import java.util.ResourceBundle;
 public class Part5 {
 
     public static void main(String[] args) throws UnsupportedEncodingException {
-        System.setOut(new PrintStream(System.out,true,"cp1251"));
-        System.out.println(getLocaleAndKey());
-
+        System.setOut(new PrintStream(System.out, true, "cp1251"));
+        getLocaleAndKey();
     }
 
-    public static String getLocaleAndKey() throws UnsupportedEncodingException {
+    public static void getLocaleAndKey() {
 
         try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
             String s;
@@ -48,8 +47,9 @@ public class Part5 {
                     File file = new File("src\\main\\");
                     URL[] urls = {file.toURI().toURL()};
                     ClassLoader cl = new URLClassLoader(urls);
-                    bundle = ResourceBundle.getBundle("resources", locale,cl);
-                    return (bundle.getString(s.split(" ")[1]));
+                    bundle = ResourceBundle.getBundle("resources", locale, cl);
+//                    bundle = ResourceBundle.getBundle("resources", locale);
+                    System.out.println(bundle.getString(s.split(" ")[1]));
 
                 } catch (NullPointerException | MissingResourceException | ClassCastException e) {
                     e.printStackTrace();
@@ -62,7 +62,6 @@ public class Part5 {
             e.printStackTrace();
         }
 
-        return null;
     }
 
 }
