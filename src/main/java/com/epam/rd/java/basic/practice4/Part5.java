@@ -10,6 +10,7 @@ public class Part5 {
 
     public static void main(String[] args) throws UnsupportedEncodingException {
         System.out.println(getLocaleAndKey());
+
     }
 
     public static String getLocaleAndKey() throws UnsupportedEncodingException {
