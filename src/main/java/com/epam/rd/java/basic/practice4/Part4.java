@@ -23,7 +23,7 @@ public class Part4 implements Iterable<String> {
 
         StringBuilder str = new StringBuilder();
         while (iterator.hasNext()) {
-            str.append(iterator.next()).append(" ").append(LINE_SEP);
+            str.append(" ").append(iterator.next()).append(LINE_SEP);
         }
         String kek = str.toString().trim();
         System.out.println(kek);
