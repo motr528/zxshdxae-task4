@@ -12,12 +12,7 @@ public class Part3 {
 
 
     public static void main(String[] args) {
-        try {
-            System.setOut(new PrintStream(System.out, true, "UTF-8"));
-            getType();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        getType();
     }
 
     public static void getType() {
@@ -54,7 +49,7 @@ public class Part3 {
 
             s = sb.toString();
 
-            String regex = "";
+            String regex;
 
             switch (type) {
                 case "char":
@@ -82,7 +77,7 @@ public class Part3 {
 //            if (sb.length() != 0) {
 //                sb.deleteCharAt(sb.length() - 1);
 //            }
-
+            sb.append(LINE_SEP);
             return sb.toString();
 
         } catch (IOException e) {
