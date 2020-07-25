@@ -65,7 +65,7 @@ public class Part3 {
                     regex = "[\\w\\p{L}&&\\D]{2,}";
                     break;
                 default:
-                    return "Incorrect input";
+                    return "Incorrect input" + LINE_SEP;
             }
 
             Matcher matcher = Pattern.compile(regex).matcher(s);

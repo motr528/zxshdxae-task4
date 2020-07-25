@@ -17,7 +17,7 @@ public class Part4 implements Iterable<String>{
         Iterator<String> iterator = part4.iterator();
 
         while (iterator.hasNext()) {
-            System.out.println(iterator.next());
+            System.out.println(iterator.next() + " ");
         }
     }
 
