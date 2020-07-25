@@ -22,6 +22,7 @@ public class Part4 implements Iterable<String> {
             sb.append(iterator.next()).append(" ");
             sb.append(LINE_SEP);
         }
+        sb.deleteCharAt(sb.length()-1);
         System.out.println(sb.toString().trim());
     }
 
