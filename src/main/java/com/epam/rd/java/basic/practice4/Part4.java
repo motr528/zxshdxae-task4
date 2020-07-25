@@ -1,7 +1,9 @@
 package com.epam.rd.java.basic.practice4;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,11 +12,13 @@ public class Part4 implements Iterable<String> {
     private static final String FILE_NAME = "part4.txt";
     private static final String WIN_CHARSET = "windows-1251";
     private static final String LINE_SEP = System.lineSeparator();
-    private static final String REGEX = "[\\w\\p{Upper}\\p{L}][^.!?]*[.!?]";
+//    private static final String REGEX = "[\\w\\p{Upper}\\p{L}][^.!?]*[.!?]";
+    private static final String REGEX = "[\\w\\p{Upper}\\p{L}].*?[.!?]";
 
     public static void main(String[] args) {
         Part4 part4 = new Part4();
         Iterator<String> iterator = part4.iterator();
+
         try {
             System.setOut(new PrintStream(System.out, true, "UTF-8"));
         } catch (UnsupportedEncodingException e) {
@@ -23,17 +27,10 @@ public class Part4 implements Iterable<String> {
 
         StringBuilder str = new StringBuilder();
         while (iterator.hasNext()) {
-//            if (str.length() == 0) {
-//                str.append(iterator.next()).append(" ").append(LINE_SEP);
-//            } else if (str.toString().endsWith(" " + LINE_SEP)) {
-//                str.append(iterator.next()).append(" ").append(LINE_SEP);
-//            } else if (str.toString().endsWith("." + LINE_SEP)) {
-//                str.append(" ").append(iterator.next()).append(LINE_SEP);
-//            }
+
             System.out.println(iterator.next());
         }
-//        String kek = str.toString().trim();
-//        System.out.println(kek);
+
 
     }
 
@@ -78,5 +75,17 @@ public class Part4 implements Iterable<String> {
             e.printStackTrace();
         }
         return "";
+    }
+
+    public static String readContent() {
+        StringBuilder content = new StringBuilder();
+        try (Scanner sc = new Scanner(new File("part4.txt"), "cp1251")) {
+            while (sc.hasNext()) {
+                content.append(sc.useDelimiter("[ " + LINE_SEP + "]").next()).append(" ");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return content.toString().trim();
     }
 }
