@@ -17,9 +17,10 @@ public class Part4 implements Iterable<String> {
         Iterator<String> iterator = part4.iterator();
 //        System.setOut(new PrintStream(System.out,true,"UTF-8"));
 
-
+        StringBuilder str = new StringBuilder();
         while (iterator.hasNext()) {
-            System.out.println(iterator.next());
+            str.append(iterator.next()).append(" ");
+            System.out.println(str);
         }
 
     }
