@@ -12,15 +12,18 @@ public class Part4 implements Iterable<String> {
     private static final String LINE_SEP = System.lineSeparator();
     private static final String REGEX = "[\\w\\p{Upper}\\p{L}][^.!?]*[.!?]";
 
-    public static void main(String[] args) throws UnsupportedEncodingException {
+    public static void main(String[] args) {
         Part4 part4 = new Part4();
         Iterator<String> iterator = part4.iterator();
-        System.setOut(new PrintStream(System.out,true,"UTF-8"));
+        try {
+            System.setOut(new PrintStream(System.out, true, "UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
 
         StringBuilder str = new StringBuilder();
         while (iterator.hasNext()) {
             str.append(iterator.next()).append(" ");
-
             System.out.print(str);
             str = new StringBuilder();
         }
