@@ -46,6 +46,7 @@ public class Part5 {
                 }
 
                 try {
+
                     bundle = ResourceBundle.getBundle("resources", locale);
                     System.out.println(bundle.getString(s.split(" ")[1]));
 

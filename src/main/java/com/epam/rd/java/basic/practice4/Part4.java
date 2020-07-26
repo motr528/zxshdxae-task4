@@ -53,7 +53,6 @@ public class Part4 implements Iterable<String> {
                 throw new UnsupportedOperationException();
             }
         };
-
     }
 
     public static String readContent() {

@@ -56,6 +56,14 @@ tasks.withType(Pmd) {
     }
 }
 
+sourceSets {
+    main {
+        resources {
+            srcDirs= ["src/main"]
+        }
+    }
+}
+
 checkstyle {
     toolVersion checkstyleVersion
     ignoreFailures = true
