@@ -1,7 +1,6 @@
 package com.epam.rd.java.basic.practice4;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
@@ -17,11 +16,11 @@ public class Part5 {
 
         Locale.setDefault(Locale.ENGLISH);
 
-        try {
-            System.setOut(new PrintStream(System.out, true, "windows-1251"));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            System.setOut(new PrintStream(System.out, true, "windows-1251"));
+//        } catch (UnsupportedEncodingException e) {
+//            e.printStackTrace();
+//        }
 
         try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
             String s;
