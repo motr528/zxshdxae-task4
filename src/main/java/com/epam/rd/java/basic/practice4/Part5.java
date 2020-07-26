@@ -21,8 +21,6 @@ public class Part5 {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
             String s;
 
-            StringBuilder sb = new StringBuilder();
-
             ResourceBundle bundle;
             Locale locale;
 
@@ -33,34 +31,41 @@ public class Part5 {
                     break;
                 }
 
-                switch (s.split(" ")[0]) {
-                    case "ru":
-                        locale = new Locale("ru");
-                        break;
-                    case "en":
-                        locale = new Locale("en");
-                        break;
-                    default:
-                        locale = Locale.getDefault();
-                        break;
+                if (s.equals("ru")) {
+                    locale = new Locale("ru");
+                    Locale.setDefault(locale);
+                    s = br.readLine();
+                } else if (s.equals("en")) {
+                    locale = new Locale("en");
+                    Locale.setDefault(locale);
+                    s = br.readLine();
                 }
+
+//                switch (s) {
+//                    case "ru":
+//                        locale = new Locale("ru");
+//                        break;
+//                    case "en":
+//                        locale = new Locale("en");
+//                        break;
+//                    default:
+//                        throw new IllegalStateException("Unexpected value: " + s);
+//                }
+
 
                 try {
 
-                    bundle = ResourceBundle.getBundle("resources", locale);
-                    System.out.println(bundle.getString(s.split(" ")[1]));
+                    bundle = ResourceBundle.getBundle("resources");
+                    System.out.println(bundle.getString(s));
 
                 } catch (NullPointerException | MissingResourceException | ClassCastException e) {
                     e.printStackTrace();
                 }
 
             }
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
 }
