@@ -1,16 +1,18 @@
 package com.epam.rd.java.basic.practice4;
 
 import java.io.*;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 public class Part5 {
 
-    public static void main(String[] args) throws UnsupportedEncodingException {
-        System.setOut(new PrintStream(System.out, true, "cp1251"));
+    public static void main(String[] args) {
+        try {
+            System.setOut(new PrintStream(System.out, true, "windows-1251"));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         getLocaleAndKey();
     }
 
@@ -44,11 +46,7 @@ public class Part5 {
                 }
 
                 try {
-                    File file = new File("src\\main\\");
-                    URL[] urls = {file.toURI().toURL()};
-                    ClassLoader cl = new URLClassLoader(urls);
-                    bundle = ResourceBundle.getBundle("resources", locale, cl);
-//                    bundle = ResourceBundle.getBundle("resources", locale);
+                    bundle = ResourceBundle.getBundle("resources", locale);
                     System.out.println(bundle.getString(s.split(" ")[1]));
 
                 } catch (NullPointerException | MissingResourceException | ClassCastException e) {
