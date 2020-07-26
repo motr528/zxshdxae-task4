@@ -1,6 +1,7 @@
 package com.epam.rd.java.basic.practice4;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
@@ -16,8 +17,11 @@ public class Part5 {
 
         Locale.setDefault(Locale.ENGLISH);
 
+        System.setIn(new ByteArrayInputStream(
+                "table ru^table en^apple ru^stop".replace("^", System.lineSeparator()).getBytes(StandardCharsets.UTF_8)));
+
 //        try {
-//            System.setOut(new PrintStream(System.out, true, "windows-1251"));
+//            System.setOut(new PrintStream(System.out, true, "UTF-8"));
 //        } catch (UnsupportedEncodingException e) {
 //            e.printStackTrace();
 //        }
