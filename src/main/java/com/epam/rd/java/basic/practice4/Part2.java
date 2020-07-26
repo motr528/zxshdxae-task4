@@ -1,9 +1,15 @@
 package com.epam.rd.java.basic.practice4;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.*;
-import java.util.Random;
+import java.security.SecureRandom;
+
 
 public class Part2 {
+
+    private static final Logger logger = LogManager.getLogger(Part2.class);
 
     private static final String WIN_CHARSET = "windows-1251";
     private static final String FILE_TO_WRITE = "part2.txt";
@@ -22,7 +28,7 @@ public class Part2 {
 
     public static String createNumbers() {
         StringBuilder sb = new StringBuilder();
-        Random rnd = new Random();
+        SecureRandom rnd = new SecureRandom();
 
         for (int i = 0; i < 10; i++) {
             sb.append(rnd.nextInt(51));
@@ -37,7 +43,7 @@ public class Part2 {
         try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName), WIN_CHARSET))) {
             bw.write(lineToWrite);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
     }
 
@@ -46,20 +52,16 @@ public class Part2 {
             String s;
             StringBuilder sb = new StringBuilder();
 
+
+
             while ((s = br.readLine()) != null) {
                 sb.append(s);
             }
 
-            String[] strArr = sb.toString().split(" ");
-            int[] arr = new int[strArr.length];
 
-            try {
-                for (int i = 0; i < arr.length; i++) {
-                    arr[i] = Integer.parseInt(strArr[i]);
-                }
-            } catch (NumberFormatException e) {
-                e.printStackTrace();
-            }
+            String[] strArr = sb.toString().split(" ");
+
+            int[] arr = parseInts(strArr);
 
             int n = arr.length;
             for (int i = 0; i < n - 1; i++) {
@@ -83,8 +85,20 @@ public class Part2 {
 
             return sb.toString();
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e);
             return null;
         }
+    }
+
+    private static int[] parseInts(String[] numbers) {
+        int[] arr = new int[numbers.length];
+        try {
+            for (int i = 0; i < arr.length; i++) {
+                arr[i] = Integer.parseInt(numbers[i]);
+            }
+        } catch (NumberFormatException e) {
+            logger.error(e);
+        }
+        return arr;
     }
 }
