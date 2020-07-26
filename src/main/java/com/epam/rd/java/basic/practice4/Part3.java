@@ -1,10 +1,15 @@
 package com.epam.rd.java.basic.practice4;
 
 import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Part3 {
+
+    private static final Logger logger = Logger.getLogger(Part3.class.getName());
+    private static final String EXCEPTION_OCCURED = "Exception occur";
 
     private static final String FILE_NAME = "part3.txt";
     private static final String WIN_CHARSET = "windows-1251";
@@ -29,7 +34,7 @@ public class Part3 {
                 System.out.print(getMatchingData(s));
             }
         } catch (IOException e) {
-            System.out.println("Incorrect input");
+            logger.log(Level.SEVERE,"Incorrect input", e);
             getType();
         }
     }
@@ -74,14 +79,12 @@ public class Part3 {
             while (matcher.find()) {
                 sb.append(matcher.group()).append(" ");
             }
-//            if (sb.length() != 0) {
-//                sb.deleteCharAt(sb.length() - 1);
-//            }
+
             sb.append(LINE_SEP);
             return sb.toString();
 
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE,EXCEPTION_OCCURED, e);
         }
         return null;
     }

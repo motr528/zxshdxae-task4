@@ -12,6 +12,8 @@ import java.util.logging.Logger;
 public class Part2 {
 
     private static final Logger logger = Logger.getLogger(Part2.class.getName());
+    private static final String EXCEPTION_OCCURED = "Exception occur";
+
 
     private static final String WIN_CHARSET = "windows-1251";
     private static final String FILE_TO_WRITE = "part2.txt";
@@ -45,7 +47,7 @@ public class Part2 {
         try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName), WIN_CHARSET))) {
             bw.write(lineToWrite);
         } catch (IOException e) {
-            logger.log(Level.SEVERE,"Exception occur", e);
+            logger.log(Level.SEVERE,EXCEPTION_OCCURED, e);
         }
     }
 
@@ -87,7 +89,7 @@ public class Part2 {
 
             return sb.toString();
         } catch (IOException e) {
-            logger.log(Level.SEVERE,"Exception occur", e);
+            logger.log(Level.SEVERE,EXCEPTION_OCCURED, e);
             return null;
         }
     }
@@ -99,7 +101,7 @@ public class Part2 {
                 arr[i] = Integer.parseInt(numbers[i]);
             }
         } catch (NumberFormatException e) {
-            logger.log(Level.SEVERE,"Exception occur", e);
+            logger.log(Level.SEVERE,EXCEPTION_OCCURED, e);
         }
         return arr;
     }
