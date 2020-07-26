@@ -16,8 +16,9 @@ public class Part6 {
     }
 
     public static void getSymbols() {
-        System.setIn(new ByteArrayInputStream(
-                "Latn^cyrl^asdf^stop".replace("^", System.lineSeparator()).getBytes(StandardCharsets.UTF_8)));
+//        System.setIn(new ByteArrayInputStream(
+//                "Latn^cyrl^asdf^stop".replace("^", System.lineSeparator()).getBytes(StandardCharsets.UTF_8)));
+
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String s;
 

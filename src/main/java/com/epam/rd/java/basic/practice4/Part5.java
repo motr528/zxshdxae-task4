@@ -17,8 +17,8 @@ public class Part5 {
 
         Locale.setDefault(Locale.ENGLISH);
 
-        System.setIn(new ByteArrayInputStream(
-                "table ru^table en^apple ru^stop".replace("^", System.lineSeparator()).getBytes(StandardCharsets.UTF_8)));
+//        System.setIn(new ByteArrayInputStream(
+//                "table ru^table en^apple ru^stop".replace("^", System.lineSeparator()).getBytes(StandardCharsets.UTF_8)));
 
 //        try {
 //            System.setOut(new PrintStream(System.out, true, "UTF-8"));
