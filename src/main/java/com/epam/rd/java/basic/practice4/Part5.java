@@ -1,6 +1,7 @@
 package com.epam.rd.java.basic.practice4;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
@@ -8,21 +9,24 @@ import java.util.ResourceBundle;
 public class Part5 {
 
     public static void main(String[] args) {
-        try {
-            System.setOut(new PrintStream(System.out, true, "windows-1251"));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+
         getLocaleAndKey();
     }
 
     public static void getLocaleAndKey() {
 
+        Locale.setDefault(Locale.ENGLISH);
+
+        try {
+            System.setOut(new PrintStream(System.out, true, StandardCharsets.UTF_8.toString()));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
         try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
             String s;
 
-            ResourceBundle bundle;
-            Locale locale;
+            ResourceBundle bundle = null;
 
             while (true) {
                 s = br.readLine();
@@ -31,41 +35,44 @@ public class Part5 {
                     break;
                 }
 
-                if (s.equals("ru")) {
-                    locale = new Locale("ru");
-                    Locale.setDefault(locale);
-                    s = br.readLine();
-                } else if (s.equals("en")) {
-                    locale = new Locale("en");
-                    Locale.setDefault(locale);
-                    s = br.readLine();
+                switch (s) {
+                    case "ru":
+                        Locale.setDefault(new Locale("ru"));
+                        s = br.readLine();
+                        if (s.equals("stop")) {
+                            return;
+                        }
+                        System.out.println(getBundleAndPrintKey(s, bundle));
+                        break;
+                    case "en":
+                        Locale.setDefault(new Locale("en"));
+                        s = br.readLine();
+                        if (s.equals("stop")) {
+                            return;
+                        }
+                        System.out.println(getBundleAndPrintKey(s, bundle));
+                        break;
+                    default:
+                        System.out.println(getBundleAndPrintKey(s, bundle));
+                        break;
                 }
-
-//                switch (s) {
-//                    case "ru":
-//                        locale = new Locale("ru");
-//                        break;
-//                    case "en":
-//                        locale = new Locale("en");
-//                        break;
-//                    default:
-//                        throw new IllegalStateException("Unexpected value: " + s);
-//                }
-
-
-                try {
-
-                    bundle = ResourceBundle.getBundle("resources");
-                    System.out.println(bundle.getString(s));
-
-                } catch (NullPointerException | MissingResourceException | ClassCastException e) {
-                    e.printStackTrace();
-                }
-
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static String getBundleAndPrintKey(String key, ResourceBundle bundle) {
+        try {
+
+            bundle = ResourceBundle.getBundle("resources");
+            return bundle.getString(key);
+
+        } catch (NullPointerException | MissingResourceException | ClassCastException e) {
+            e.printStackTrace();
+            return null;
+        }
+
     }
 
 }
