@@ -12,25 +12,17 @@ public class Part4 implements Iterable<String> {
     private static final String FILE_NAME = "part4.txt";
     private static final String WIN_CHARSET = "windows-1251";
     private static final String LINE_SEP = System.lineSeparator();
-//    private static final String REGEX = "[\\w\\p{Upper}\\p{L}][^.!?]*[.!?]";
     private static final String REGEX = "[\\w\\p{Upper}\\p{L}].*?[.!?]";
-//    private static final String REGEX = "[\\w\\p{Upper}\\p{L}][\\w\\p{L}\\s,?!]*?[.!?]";
-//    private static final String REGEX = "[\\w\\p{L}]*[.|?|!][\\s]";
 
     public static void main(String[] args) {
         Part4 part4 = new Part4();
         Iterator<String> iterator = part4.iterator();
-
 
         try {
             System.setOut(new PrintStream(System.out, true, "UTF-8"));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-
-//        System.out.println(readContent());
-//
-        StringBuilder str = new StringBuilder();
 
         while (iterator.hasNext()) {
             System.out.println(iterator.next());
@@ -44,7 +36,6 @@ public class Part4 implements Iterable<String> {
 
         return new Iterator<String>() {
 
-//            Matcher matcher = Pattern.compile(REGEX).matcher(getText());
             Matcher matcher = Pattern.compile(REGEX).matcher(readContent());
 
             @Override
@@ -54,8 +45,7 @@ public class Part4 implements Iterable<String> {
 
             @Override
             public String next() {
-                String s = matcher.group();
-                return s;
+                return matcher.group();
             }
 
             @Override
@@ -64,23 +54,6 @@ public class Part4 implements Iterable<String> {
             }
         };
 
-    }
-
-    public static String getText() {
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(FILE_NAME), WIN_CHARSET))) {
-            String s;
-            StringBuilder sb = new StringBuilder();
-
-            while ((s = br.readLine()) != null) {
-                sb.append(s);
-            }
-
-            return sb.toString();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return "";
     }
 
     public static String readContent() {
