@@ -18,7 +18,7 @@ public class Part5 {
         Locale.setDefault(Locale.ENGLISH);
 
         try {
-            System.setOut(new PrintStream(System.out, true, StandardCharsets.UTF_8.toString()));
+            System.setOut(new PrintStream(System.out, true, "windows-1251"));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -35,25 +35,17 @@ public class Part5 {
                     break;
                 }
 
-                switch (s) {
+                String key = s.split(" ")[0];
+                String language = s.split(" ")[1];
+
+                switch (language) {
                     case "ru":
                         Locale.setDefault(new Locale("ru"));
-                        s = br.readLine();
-                        if (s.equals("stop")) {
-                            return;
-                        }
-                        System.out.println(getBundleAndPrintKey(s, bundle));
+                        System.out.println(getBundleAndPrintKey(key, bundle));
                         break;
                     case "en":
                         Locale.setDefault(new Locale("en"));
-                        s = br.readLine();
-                        if (s.equals("stop")) {
-                            return;
-                        }
-                        System.out.println(getBundleAndPrintKey(s, bundle));
-                        break;
-                    default:
-                        System.out.println(getBundleAndPrintKey(s, bundle));
+                        System.out.println(getBundleAndPrintKey(key, bundle));
                         break;
                 }
             }
