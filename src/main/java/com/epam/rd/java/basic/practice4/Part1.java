@@ -1,10 +1,16 @@
 package com.epam.rd.java.basic.practice4;
 
 import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Part1 {
+
+    private static final Logger logger = Logger.getLogger(Part1.class.getName());
+    private static final String EXCEPTION_OCCURRED = "Exception occur";
+
     private static final String LINE_SEP = System.lineSeparator();
 
     public static void main(String[] args) {
@@ -30,7 +36,7 @@ public class Part1 {
             System.out.println(s);
 
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, EXCEPTION_OCCURRED, e);
         }
     }
 
