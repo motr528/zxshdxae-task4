@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 public class Part3 {
 
     private static final Logger logger = Logger.getLogger(Part3.class.getName());
-    private static final String EXCEPTION_OCCURED = "Exception occur";
+    private static final String EXCEPTION_OCCURRED = "Exception occur";
 
     private static final String FILE_NAME = "part3.txt";
     private static final String WIN_CHARSET = "windows-1251";
@@ -84,7 +84,7 @@ public class Part3 {
             return sb.toString();
 
         } catch (IOException e) {
-            logger.log(Level.SEVERE,EXCEPTION_OCCURED, e);
+            logger.log(Level.SEVERE, EXCEPTION_OCCURRED, e);
         }
         return null;
     }
