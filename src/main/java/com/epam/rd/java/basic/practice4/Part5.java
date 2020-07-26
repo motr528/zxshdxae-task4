@@ -70,7 +70,7 @@ public class Part5 {
 
         } catch (NullPointerException | MissingResourceException | ClassCastException e) {
             e.printStackTrace();
-            return null;
+            return "kek";
         }
 
     }
