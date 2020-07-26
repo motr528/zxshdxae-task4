@@ -1,11 +1,16 @@
 package com.epam.rd.java.basic.practice4;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Part6 {
+
+    private static final Logger logger = Logger.getLogger(Part6.class.getName());
+    private static final String EXCEPTION_OCCURRED = "Exception occur";
+
     private static final String FILE_NAME = "part6.txt";
     private static final String WIN_CHARSET = "windows-1251";
     private static final String LINE_SEP = System.lineSeparator();
@@ -16,8 +21,6 @@ public class Part6 {
     }
 
     public static void getSymbols() {
-//        System.setIn(new ByteArrayInputStream(
-//                "Latn^cyrl^asdf^stop".replace("^", System.lineSeparator()).getBytes(StandardCharsets.UTF_8)));
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String s;
@@ -25,7 +28,7 @@ public class Part6 {
         try {
             System.setOut(new PrintStream(System.out, true, "UTF-8"));
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, EXCEPTION_OCCURRED, e);
         }
 
         try {
@@ -77,14 +80,12 @@ public class Part6 {
             while (matcher.find()) {
                 sb.append(matcher.group()).append(" ");
             }
-//            if (sb.length() != 0) {
-//                sb.deleteCharAt(sb.length() - 1);
-//            }
+
             sb.append(LINE_SEP);
             return sb.toString();
 
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, EXCEPTION_OCCURRED, e);
         }
         return null;
     }

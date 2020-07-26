@@ -2,7 +2,6 @@ package com.epam.rd.java.basic.practice4;
 
 import java.io.*;
 import java.util.Iterator;
-import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.logging.Level;

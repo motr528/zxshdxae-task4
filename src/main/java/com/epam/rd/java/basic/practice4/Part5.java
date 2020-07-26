@@ -1,12 +1,16 @@
 package com.epam.rd.java.basic.practice4;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Part5 {
+
+    private static final Logger logger = Logger.getLogger(Part5.class.getName());
+    private static final String EXCEPTION_OCCURRED = "Exception occur";
 
     public static void main(String[] args) {
 
@@ -17,19 +21,9 @@ public class Part5 {
 
         Locale.setDefault(Locale.ENGLISH);
 
-//        System.setIn(new ByteArrayInputStream(
-//                "table ru^table en^apple ru^stop".replace("^", System.lineSeparator()).getBytes(StandardCharsets.UTF_8)));
-
-//        try {
-//            System.setOut(new PrintStream(System.out, true, "UTF-8"));
-//        } catch (UnsupportedEncodingException e) {
-//            e.printStackTrace();
-//        }
-
         try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
             String s;
 
-            ResourceBundle bundle = null;
 
             while (true) {
                 s = br.readLine();
@@ -41,30 +35,27 @@ public class Part5 {
                 String key = s.split(" ")[0];
                 String language = s.split(" ")[1];
 
-                switch (language) {
-                    case "ru":
-                        Locale.setDefault(new Locale("ru"));
-                        System.out.println(getBundleAndPrintKey(key, bundle));
-                        break;
-                    case "en":
-                        Locale.setDefault(new Locale("en"));
-                        System.out.println(getBundleAndPrintKey(key, bundle));
-                        break;
+                if ("ru".equals(language)) {
+                    Locale.setDefault(new Locale("ru"));
+                    System.out.println(getBundleAndPrintKey(key));
+                } else if ("en".equals(language)) {
+                    Locale.setDefault(new Locale("en"));
+                    System.out.println(getBundleAndPrintKey(key));
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, EXCEPTION_OCCURRED, e);
         }
     }
 
-    public static String getBundleAndPrintKey(String key, ResourceBundle bundle) {
+    public static String getBundleAndPrintKey(String key) {
         try {
 
-            bundle = ResourceBundle.getBundle("resources");
+            ResourceBundle bundle = ResourceBundle.getBundle("resources");
             return bundle.getString(key);
 
         } catch (NullPointerException | MissingResourceException | ClassCastException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, EXCEPTION_OCCURRED, e);
             return "kek";
         }
 
